@@ -3,6 +3,7 @@ using CovCourse.Services.Catalog.Services;
 using CovCourse.Shared.ControllerBases;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver;
 
 namespace CovCourse.Services.Catalog.Controllers
 {
@@ -20,12 +21,12 @@ namespace CovCourse.Services.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll() 
         {
-            var response = await _categoryService.GetAll();
+            var response = await _categoryService.GetAllAsync();
 
             return CreateActionResultInstance(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         public async Task<IActionResult> GetById(string Id)
         {
             var response = await _categoryService.GetByIdAsync(Id);

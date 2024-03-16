@@ -19,9 +19,10 @@ namespace CovCourse.Services.Catalog.Services
             _categories = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
-        public async Task<Response<List<CategoryDto>>> GetAll()
+        public async Task<Response<List<CategoryDto>>> GetAllAsync()
         {
             var categories = await _categories.Find(category => true).ToListAsync();
+
             return Response<List<CategoryDto>>.Success(_mapper.Map<List<CategoryDto>>(categories), 200);
         }
 

@@ -26,7 +26,7 @@ namespace CovCourse.Services.Catalog.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         public async Task<IActionResult> GetById(string Id)
         {
             var response = await _courseService.GetByIdAsync(Id);
@@ -35,7 +35,7 @@ namespace CovCourse.Services.Catalog.Controllers
         }
 
         [Route("/api/[controller]/GetAllByUserId/{userId}")]
-        [HttpPost]//?
+        [HttpGet]
         public async Task<IActionResult> GetAllByUserId(string UserId)
         {
             var response = await _courseService.GetAllByUserIdAsync(UserId);
@@ -57,7 +57,7 @@ namespace CovCourse.Services.Catalog.Controllers
 
             return CreateActionResultInstance(response);
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("id")]
         public async Task<IActionResult> Delete(string Id)
         {
             var response = await _courseService.DeleteAsync(Id);

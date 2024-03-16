@@ -6,8 +6,8 @@ namespace CovCourse.Services.Catalog.Services
 {
     public interface ICategoryService
     {
-        Task<Response<List<CategoryDto>>> GetAll();
-        Task<Response<CategoryDto>> CreateAsync(CategoryDto categoryDto);
+        Task<Response<List<CategoryDto>>> GetAllAsync();
+        Task<Response<CategoryDto>> CreateAsync(CategoryDto category);
         Task<Response<CategoryDto>> GetByIdAsync(string Id);
     }
 }
