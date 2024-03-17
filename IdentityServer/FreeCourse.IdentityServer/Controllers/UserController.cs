@@ -1,5 +1,5 @@
-﻿using FreeCourse.IdentityServer.Dtos;
-using FreeCourse.IdentityServer.Models;
+﻿using CovCourse.IdentityServer.Dtos;
+using CovCourse.IdentityServer.Models;
 using CovCourse.Shared.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static IdentityServer4.IdentityServerConstants;
 
-namespace FreeCourse.IdentityServer.Controllers
+namespace CovCourse.IdentityServer.Controllers
 {
     [Authorize(LocalApi.PolicyName)]
     [Route("api/[controller]/[action]")]

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\IdentityServer\FreeCourse.IdentityServer\FreeCourse.IdentityServer.csproj" />
+    <ProjectReference Include="..\..\..\IdentityServer\FreeCourse.IdentityServer\CovCourse.IdentityServer.csproj" />
     <ProjectReference Include="..\..\..\Shared\CovCourse.Shared\CovCourse.Shared.csproj" />
   </ItemGroup>
 

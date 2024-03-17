@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FreeCourse.IdentityServer.Dtos
+namespace CovCourse.IdentityServer.Dtos
 {
     public class SignupDto
     {

@@ -1,4 +1,4 @@
-﻿using FreeCourse.IdentityServer.Models;
+﻿using CovCourse.IdentityServer.Models;
 using IdentityModel;
 using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Identity;
