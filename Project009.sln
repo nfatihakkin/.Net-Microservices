@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovCourse.IdentityServer", "IdentityServer\CovCourse.IdentityServer\CovCourse.IdentityServer.csproj", "{FA8CEACE-1A21-4B4C-ABD4-027904AFA346}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{A9ED3E61-322F-4700-BE2B-134DA45EC4B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovCourse.Services.PhotoStock", "PhooStock\CovCourse.Services.PhotoStock\CovCourse.Services.PhotoStock.csproj", "{7EB4D052-2BB3-48ED-A6B1-691A2A1AB3BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,10 @@ Global
 		{FA8CEACE-1A21-4B4C-ABD4-027904AFA346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA8CEACE-1A21-4B4C-ABD4-027904AFA346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA8CEACE-1A21-4B4C-ABD4-027904AFA346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB4D052-2BB3-48ED-A6B1-691A2A1AB3BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB4D052-2BB3-48ED-A6B1-691A2A1AB3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB4D052-2BB3-48ED-A6B1-691A2A1AB3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB4D052-2BB3-48ED-A6B1-691A2A1AB3BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,8 @@ Global
 		{F21FA444-0726-46D3-BF44-FB9C3D64443B} = {80857758-3F35-44ED-940C-B455488FD660}
 		{B4E5D403-D42B-4AEA-9E02-5AA3828B83FA} = {81774F09-06B8-4343-A29F-3FDE11B7C9AD}
 		{FA8CEACE-1A21-4B4C-ABD4-027904AFA346} = {9B439B61-B53C-47DC-8907-C108B5729799}
+		{A9ED3E61-322F-4700-BE2B-134DA45EC4B0} = {A8AD9A73-B6CF-4148-B7A2-7E8AAFD8459D}
+		{7EB4D052-2BB3-48ED-A6B1-691A2A1AB3BB} = {A9ED3E61-322F-4700-BE2B-134DA45EC4B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F04FCF7-5FF1-4DF2-887C-783A3363C71D}
