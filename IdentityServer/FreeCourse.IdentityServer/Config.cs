@@ -6,7 +6,7 @@ using IdentityServer4.Models;
 using System;
 using System.Collections.Generic;
 
-namespace FreeCourse.IdentityServer
+namespace CovCourse.IdentityServer
 {
     public static class Config
     {

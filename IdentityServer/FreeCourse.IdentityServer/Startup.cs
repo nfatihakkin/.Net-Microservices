@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FreeCourse.IdentityServer.Services;
+using CovCourse.IdentityServer.Services;
 
-namespace FreeCourse.IdentityServer
+namespace CovCourse.IdentityServer
 {
     public class Startup
     {

@@ -15,7 +15,7 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
 
-namespace FreeCourse.IdentityServer
+namespace CovCourse.IdentityServer
 {
     public class Program
     {

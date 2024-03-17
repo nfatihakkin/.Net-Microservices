@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace FreeCourse.IdentityServer
+namespace CovCourse.IdentityServer
 {
     public class SeedData
     {
