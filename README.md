@@ -18,3 +18,4 @@
 ### Discount.API
 - .Net 7
 - PostgreSQL
+- Dapper
