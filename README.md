@@ -19,3 +19,8 @@
 - .Net 7
 - PostgreSQL
 - Dapper
+
+### Order.API
+- DDD
+- Onion Arch
+- .Net 7
