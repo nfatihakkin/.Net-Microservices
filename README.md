@@ -24,3 +24,6 @@
 - DDD
 - Onion Arch
 - .Net 7
+- MsSql
+- MediatR
+- AutoMapper
