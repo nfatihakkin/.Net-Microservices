@@ -22,6 +22,11 @@ namespace CovCourse.Services.Order.Domain.OrderAggragate
             BuyerId = buyerId;
             _orderItems = new List<OrderItem>();
         }
+
+        public Order()
+        {
+        }
+
         public void AddOrderItem(string productId,string productName,decimal price,string pictureUrl)
         {
             var existProduct = _orderItems.Any(x=>x.ProductId==productId);
