@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\CovCourse.Shared\CovCourse.Shared.csproj" />
     <ProjectReference Include="..\CovCourse.Services.Order.Domain\CovCourse.Services.Order.Domain.csproj" />
     <ProjectReference Include="..\CovCourse.Services.Order.Infrastucture\CovCourse.Services.Order.Infrastucture.csproj" />
   </ItemGroup>
