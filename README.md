@@ -24,3 +24,7 @@
 - DDD
 - Onion Arch
 - .Net 7
+
+### Gateway
+- Ocelot
+- .Net
