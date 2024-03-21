@@ -1,3 +1,4 @@
+using CovCourse.Services.Catalog.Dtos;
 using CovCourse.Services.Catalog.Services;
 using CovCourse.Services.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -5,6 +6,8 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -38,6 +41,19 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+
+    var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+
+    if (!(await categoryService.GetAllAsync()).Data.Any())
+    {
+        await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core Kursu" });
+        await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core API Kursu" });
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

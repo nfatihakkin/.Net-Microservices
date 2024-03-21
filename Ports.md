@@ -1,3 +1,4 @@
+Gateway        -> 5000
 IdentityServer -> 5001
 Services
 - catalogAPI   -> 5011
@@ -5,3 +6,4 @@ Services
 - Basket       -> 5013
 - Discount     -> 5014
 - Order        -> 5015
+- FakePaymen   -> 5016
