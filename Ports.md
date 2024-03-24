@@ -1,5 +1,6 @@
 Gateway        -> 5000
 IdentityServer -> 5001
+Web            -> 5010
 Services
 - catalogAPI   -> 5011
 - PhotoStock   -> 5012
