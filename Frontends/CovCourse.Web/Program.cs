@@ -1,3 +1,4 @@
+using CovCourse.Web.Handler;
 using CovCourse.Web.Models;
 using CovCourse.Web.Services;
 using CovCourse.Web.Services.Interfaces;
@@ -13,7 +14,8 @@ builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection(
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri("http://localhost:5001");//ServiceApiSettings.IdentityBaseUri
-});
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
