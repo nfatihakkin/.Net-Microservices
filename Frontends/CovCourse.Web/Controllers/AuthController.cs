@@ -1,5 +1,7 @@
 ﻿using CovCourse.Web.Models;
 using CovCourse.Web.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CovCourse.Web.Controllers
@@ -40,6 +42,12 @@ namespace CovCourse.Web.Controllers
                 return View();
              
             }
+            return RedirectToAction(nameof(Index), "Home");
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _identityService.RefreshToken();
             return RedirectToAction(nameof(Index), "Home");
         }
     }
