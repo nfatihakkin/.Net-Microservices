@@ -8,16 +8,22 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddAccessTokenManagement();
 builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddScoped<ClientCredentialTokenHandler>();
 builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
-builder.Services.AddHttpClient<IIdentityService,IdentityService>();
+
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
+
+
+builder.Services.AddHttpClient<IClientCredentialTokenService,ClientCredentialTokenService>();
+builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt =>
 {
-    opt.BaseAddress = new Uri("http://localhost:5001"/*ServiceApiSettings.IdentityBaseUri*/+ "/services/catalog/"/*ServiceApiSettings.Catalog.Path*/);
-});
+    opt.BaseAddress = new Uri("http://localhost:5000"/*ServiceApiSettings.IdentityBaseUri*/+ "/services/catalog/"/*ServiceApiSettings.Catalog.Path*/);
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>

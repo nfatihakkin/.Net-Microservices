@@ -26,7 +26,7 @@ namespace CovCourse.Services.Catalog.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string Id)
         {
             var response = await _courseService.GetByIdAsync(Id);
@@ -57,7 +57,7 @@ namespace CovCourse.Services.Catalog.Controllers
 
             return CreateActionResultInstance(response);
         }
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string Id)
         {
             var response = await _courseService.DeleteAsync(Id);
