@@ -1,3 +1,4 @@
+using CovCourse.Shared.Services;
 using CovCourse.Web.Handler;
 using CovCourse.Web.Models;
 using CovCourse.Web.Services;
@@ -8,10 +9,17 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
 builder.Services.AddHttpClient<IIdentityService,IdentityService>();
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt =>
+{
+    opt.BaseAddress = new Uri("http://localhost:5001"/*ServiceApiSettings.IdentityBaseUri*/+ "/services/catalog/"/*ServiceApiSettings.Catalog.Path*/);
+});
+
+
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri("http://localhost:5001");//ServiceApiSettings.IdentityBaseUri
