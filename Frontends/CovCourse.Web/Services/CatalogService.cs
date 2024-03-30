@@ -1,4 +1,5 @@
 ﻿using CovCourse.Shared.Dtos;
+using CovCourse.Web.Helpers;
 using CovCourse.Web.Models;
 using CovCourse.Web.Models.Catalogs;
 using CovCourse.Web.Services.Interfaces;
@@ -8,14 +9,24 @@ namespace CovCourse.Web.Services
     public class CatalogService : ICatalogService
     {
         private readonly HttpClient _httpClient;
+        private readonly IPhotoStockService _photoStockService;
+        private readonly PhotoHelper _photoHelper;
 
-        public CatalogService(HttpClient httpClient)
+        public CatalogService(HttpClient httpClient, IPhotoStockService photoStockService,PhotoHelper photoHelper)
         {
             _httpClient = httpClient;
+            _photoStockService = photoStockService;
+            _photoHelper = photoHelper;
         }
 
         public async Task<bool> CreateCourseAsync(CourseCreateInput courseCreateInput)
         {
+            var resultPhoto = await _photoStockService.UploadPhoto(courseCreateInput.PhotoFromFile);
+            if (resultPhoto != null)
+            {
+                courseCreateInput.Photo = resultPhoto.Url;
+
+            }
             var response = await _httpClient.PostAsJsonAsync<CourseCreateInput>("course", courseCreateInput);
 
             return response.IsSuccessStatusCode;
@@ -48,7 +59,9 @@ namespace CovCourse.Web.Services
                 return null;
             }
             var responseSuccess = await response.Content.ReadFromJsonAsync<Response<List<CourseViewModel>>>();
-
+            responseSuccess.Data.ForEach(x => {
+                x.StockPhotoUrl = _photoHelper.GetPhotoStockUrl(x.Photo);
+            });
             return responseSuccess.Data;
         }
 
@@ -60,7 +73,7 @@ namespace CovCourse.Web.Services
                 return null;
             }
             var responseSuccess = await response.Content.ReadFromJsonAsync<Response<CourseViewModel>>();
-
+            responseSuccess.Data.StockPhotoUrl = _photoHelper.GetPhotoStockUrl(responseSuccess.Data.Photo);
             return responseSuccess.Data;
         }
 
@@ -72,12 +85,22 @@ namespace CovCourse.Web.Services
                 return null;
             }
             var responseSuccess = await response.Content.ReadFromJsonAsync<Response<List<CourseViewModel>>>();
+            responseSuccess.Data.ForEach(x=> {
+                x.StockPhotoUrl = _photoHelper.GetPhotoStockUrl(x.Photo);
+            });   
 
             return responseSuccess.Data;
         }
 
         public async Task<bool> UpdateCourseAsync(CourseUpdateInput courseUpdateInput)
         {
+            var resultPhoto = await _photoStockService.UploadPhoto(courseUpdateInput.PhotoFromFile);
+            if (resultPhoto != null)
+            {
+                await _photoStockService.DeletePhoto(courseUpdateInput.Photo);
+                courseUpdateInput.Photo = resultPhoto.Url;
+
+            }
             var response = await _httpClient.PutAsJsonAsync<CourseUpdateInput>("course", courseUpdateInput);
 
             return response.IsSuccessStatusCode;

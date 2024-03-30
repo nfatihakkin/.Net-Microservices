@@ -1,5 +1,6 @@
 using CovCourse.Shared.Services;
 using CovCourse.Web.Handler;
+using CovCourse.Web.Helpers;
 using CovCourse.Web.Models;
 using CovCourse.Web.Services;
 using CovCourse.Web.Services.Interfaces;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAccessTokenManagement();
+builder.Services.AddSingleton<PhotoHelper >(); 
 builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 builder.Services.AddScoped<ClientCredentialTokenHandler>();
 builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
@@ -23,6 +25,10 @@ builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt =>
 {
     opt.BaseAddress = new Uri("http://localhost:5000"/*ServiceApiSettings.IdentityBaseUri*/+ "/services/catalog/"/*ServiceApiSettings.Catalog.Path*/);
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+builder.Services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
+{
+    opt.BaseAddress = new Uri("http://localhost:5000"/*ServiceApiSettings.IdentityBaseUri*/+ "/services/photostock/"/*ServiceApiSettings.PhotoStock.Path*/);
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 

@@ -43,7 +43,11 @@
                         <span class="text-danger" asp-validation-for="Feature.Duration"></span>
                     </div>
 
-                    @*  File input will be added. *@
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="PhotoFromFile">
+                            <input type="file" asp-for="PhotoFromFile" class="form-control" />
+                        </label>
+                    </div>
 
                     <button type="submit" class="btn btn-primary">UPDATE</button>
                 </form>
