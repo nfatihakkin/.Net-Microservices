@@ -60,7 +60,7 @@
                     "Port": 5014
                 }
             ],
-            "UpstreamPathTemplate": "/services/discoun/{everything}",
+            "UpstreamPathTemplate": "/services/discount/{everything}",
             "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
             "UpstreamScheme": "http",
             "AuthenticationOptions": {

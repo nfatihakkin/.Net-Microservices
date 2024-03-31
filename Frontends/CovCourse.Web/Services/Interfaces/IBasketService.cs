@@ -8,7 +8,7 @@ namespace CovCourse.Web.Services.Interfaces
         Task<bool> Delete();
         Task<bool> RemoveBasketItem(string courseId);
         Task<bool> ApplyDiscount(string discountCode);
-        Task<bool> CancelApplyDiscount(string discountCode);
+        Task<bool> CancelApplyDiscount();
         Task<BasketViewModel> Get();
         Task AddBasketItem(BasketItemViewModel basketItemViewModel);
     }
