@@ -56,7 +56,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovCourse.Gateway", "Gatewa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{98B64ACA-A0C3-4BD4-B207-1F60F5004A01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovCourse.Web", "Frontends\CovCourse.Web\CovCourse.Web.csproj", "{EBB06347-31D0-4F64-ACBE-A4A67AA5BBFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CovCourse.Web", "Frontends\CovCourse.Web\CovCourse.Web.csproj", "{EBB06347-31D0-4F64-ACBE-A4A67AA5BBFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
