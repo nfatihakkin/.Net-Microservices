@@ -28,3 +28,6 @@
 ### Gateway
 - Ocelot
 - .Net
+
+### Asp.Net Core MVC APP
+- .Net 7
