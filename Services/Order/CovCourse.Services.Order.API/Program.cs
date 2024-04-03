@@ -1,5 +1,6 @@
 using CovCourse.Services.Order.Application.Consumers;
 using CovCourse.Services.Order.Infrastucture;
+using CovCourse.Shared.Messages;
 using CovCourse.Shared.Services;
 using MassTransit;
 using MediatR;
@@ -15,10 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<CreateOrderMessageCommandConsumer>();
-
+    x.AddConsumer<CourseNameChangedEventConsumer>();
     // Default Port : 5672
     x.UsingRabbitMq((context, cfg) =>
     {
+        
         cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
         {
             host.Username("guest");
@@ -29,7 +31,11 @@ builder.Services.AddMassTransit(x =>
         {
             e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context);
         });
-    });
+		cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
+		{
+			e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
+		});
+	});
 });
 
 var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
