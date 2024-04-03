@@ -33,3 +33,4 @@
 - .Net 7
 
 ### MassTransit - RabbitMQ
+### Eventual Consistency
