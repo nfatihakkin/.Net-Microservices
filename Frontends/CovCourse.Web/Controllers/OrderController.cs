@@ -22,24 +22,39 @@ namespace CovCourse.Web.Controllers
 
             return View(new CheckoutInfoInput());
         }
-        
+        [HttpPost]
         public async Task<IActionResult> CheckOut(CheckoutInfoInput checkoutInfoInput)
         {
-            var orderStatus = await _orderService.CreateOrder(checkoutInfoInput);
+            //First way - sync
+            //var orderStatus = await _orderService.CreateOrder(checkoutInfoInput);
 
-            if (!orderStatus.isSuccessful)
+            //Second way - async
+            var orderSuspend = await _orderService.SuspendOrder(checkoutInfoInput);
+
+            if (!orderSuspend.isSuccessful)
             {
                 var basket = await _basketService.Get();
                 ViewBag.basket = basket;
-                ViewBag.error = orderStatus.Error;
+                ViewBag.error = orderSuspend.Error;
                 return View();
             }
-            return RedirectToAction(nameof(SuccessfulResult),new {orderId=orderStatus.OrderId});
+            //First way - sync
+            // return RedirectToAction(nameof(SuccessfulResult),new {orderId= orderSuspend.OrderId});
+
+            //Second way - async
+            return RedirectToAction(nameof(SuccessfulResult),new {orderId= new Random().Next(1,1000)});
         }
         public IActionResult SuccessfulResult(int orderId)
         {
             ViewBag.orderId = orderId; 
             return View();
+        }
+        public async Task<IActionResult> CheckoutHistory()
+        {
+            var orders = await _orderService.GetOrder();
+
+         
+           return View(orders);
         }
     }
 }

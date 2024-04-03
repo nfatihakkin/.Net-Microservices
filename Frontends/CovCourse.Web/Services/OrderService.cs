@@ -64,7 +64,7 @@ namespace CovCourse.Web.Services
             }
             var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
              orderCreatedViewModel.Data.isSuccessful = true;
-            _basketService.Delete();
+            await _basketService.Delete();
             return orderCreatedViewModel.Data;
 
         }
@@ -76,9 +76,48 @@ namespace CovCourse.Web.Services
             return response.Data;
         }
 
-        public Task SuspendOrder(CheckoutInfoInput checkoutInfoInput)
+        public async Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput)
         {
-            throw new NotImplementedException();
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput()
+                {
+                    District = checkoutInfoInput.District,
+                    Line = checkoutInfoInput.Line,
+                    Province = checkoutInfoInput.Province,
+                    Street = checkoutInfoInput.Street,
+                    ZipCode = checkoutInfoInput.ZipCode
+                }
+            };
+
+            basket.BasketItems.ForEach(x => {
+                var orderItem = new OrderItemCreateInput() { ProductId = x.CourseId, Price = x.GetCurrentPrice, PictureUrl = "", ProductName = x.CourseName };
+                orderCreateInput.OrderItems.Add(orderItem);
+            });
+
+     
+            var payment = new PaymentInfoInput()
+            {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                CVV = checkoutInfoInput.CVV,
+                Expiration = checkoutInfoInput.Expiration,
+                TotalPrice = basket.TotalPrice,
+                Order = orderCreateInput
+            };
+
+            var responsePayment = await _paymentService.ReceivePayment(payment);
+            if (!responsePayment)
+            {
+                return new OrderSuspendViewModel() { Error = "Payment could not be received !", isSuccessful = false };
+            }
+
+
+            await _basketService.Delete();
+            return new OrderSuspendViewModel() { isSuccessful = true };
         }
     }
 }
