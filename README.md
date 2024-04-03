@@ -31,3 +31,5 @@
 
 ### Asp.Net Core MVC APP
 - .Net 7
+
+### MassTransit - RabbitMQ
