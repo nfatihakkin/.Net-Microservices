@@ -54,7 +54,7 @@ namespace CovCourse.IdentityServer
 
                     if (!userManager.Users.Any())
                     {
-                        userManager.CreateAsync(new ApplicationUser { UserName = "fatihakkin", Email = "fatih133603@gmail.com", City = "Bursa" }, "CyberCov742.").Wait();
+                        userManager.CreateAsync(new ApplicationUser { UserName = "fatihakkin", Email = "fatih133603@gmail.com", City = "Bursa" }, "CyberCov741.").Wait();
                     }
                 }
 

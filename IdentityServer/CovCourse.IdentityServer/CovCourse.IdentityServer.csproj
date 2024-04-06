@@ -26,4 +26,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\CovCourse.Shared\CovCourse.Shared.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
 </Project>
