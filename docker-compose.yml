@@ -27,6 +27,22 @@ services:
     build: 
       context: .
       dockerfile: Services/Basket/CovCourse.Services.Basket/Dockerfile
+  photostock.api:
+    image: photostock_api_image
+    build: 
+      context: .
+      dockerfile: Services/PhotoStock/CovCourse.Services.PhotoStock/Dockerfile
+  discount.api:
+    image: discount_api_image
+    build: 
+      context: .
+      dockerfile: Services/Discount/CovCourse.Services.Discount/Dockerfile
+  fakepayment.api:
+    image: fakepayment_api_image
+    build: 
+      context: .
+      dockerfile: Services/FakePayment/CovCourse.Services.FakePayment/Dockerfile
+
       
 volumes:
   catalogdb_volume:

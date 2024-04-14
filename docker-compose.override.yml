@@ -81,4 +81,34 @@ services:
       - "5013:80"
     depends_on:
       - basketdb
+  photostock.api:
+    container_name: photostock.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api:5001
+    ports:
+      - "5012:80"
+    volumes:
+      - type: bind
+        source: C:\Users\user\Desktop\Covanni\Coding\ftp\Photos
+        target: /app/wwwroot/photos
+  discount.api:
+    container_name: discount.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api:5001
+      - "ConnectionStrings:PostgreSql=UserID=admin;Password=CyberCov741.;Server=discountdb;Port=5432;Database=discountDb;Integrated Security=true;Pooling=true;"
+    ports:
+      - "5014:80"
+    depends_on:
+      - discountdb
+  fakepayment.api:
+    container_name: fakepayment.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api:5001
+      - RabbitMQUrl=rabbitmq
+    ports:
+      - "5016:80"
+
     

@@ -7,4 +7,4 @@ Services
 - Basket       -> 5013
 - Discount     -> 5014
 - Order        -> 5015
-- FakePaymen   -> 5016
+- FakePayment   -> 5016
