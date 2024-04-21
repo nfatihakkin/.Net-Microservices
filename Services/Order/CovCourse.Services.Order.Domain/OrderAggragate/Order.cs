@@ -36,6 +36,6 @@ namespace CovCourse.Services.Order.Domain.OrderAggragate
                 _orderItems.Add(newOrderItem);
             }
         }
-        public decimal GetTotalPrice => _orderItems.Sum(x=>x.Price);
+        public decimal? GetTotalPrice => _orderItems.Sum(x=>x.Price);
     }
 }

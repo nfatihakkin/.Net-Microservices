@@ -7,6 +7,6 @@
         public DateTime CreatedDate { get; set; }
        // public Address Address { get; set; }
         public string BuyerId { get; set; }
-        public List<OrderItemViewModel>? OrderItems { get; set; }
+        public List<OrderItemViewModel> OrderItems { get; set; }
     }
 }

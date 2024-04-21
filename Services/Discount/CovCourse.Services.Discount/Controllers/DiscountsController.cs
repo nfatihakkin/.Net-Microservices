@@ -1,6 +1,7 @@
 ﻿using CovCourse.Services.Discount.Services;
 using CovCourse.Shared.ControllerBases;
 using CovCourse.Shared.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,7 @@ namespace CovCourse.Services.Discount.Controllers
             var discount = await _discountService.GetByUserId(code, _sharedIdentityService.GetUserId);
             return CreateActionResultInstance(discount);
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Save(Models.Discount discount)
         {

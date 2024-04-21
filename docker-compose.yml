@@ -42,7 +42,21 @@ services:
     build: 
       context: .
       dockerfile: Services/FakePayment/CovCourse.Services.FakePayment/Dockerfile
-
+  order.api:
+    image: order_api_image
+    build: 
+      context: .
+      dockerfile: Services/Order/CovCourse.Services.Order.API/Dockerfile
+  gateway.api:
+    image: gateway_api_image
+    build: 
+      context: .
+      dockerfile: Gateways/CovCourse.Gateway/Dockerfile
+  aspnetcoremvc.web:
+    image: aspnetcoremvc_api_image
+    build: 
+      context: .
+      dockerfile: Frontends/CovCourse.Web/Dockerfile
       
 volumes:
   catalogdb_volume:

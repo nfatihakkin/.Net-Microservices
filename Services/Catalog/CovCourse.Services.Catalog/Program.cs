@@ -5,6 +5,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
+using System.Xml.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,12 +60,14 @@ using (var scope = app.Services.CreateScope())
     var serviceProvider = scope.ServiceProvider;
 
     var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+    var courseService = serviceProvider.GetRequiredService<ICourseService>();
 
     if (!(await categoryService.GetAllAsync()).Data.Any())
     {
-        await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core Kursu" });
+        var category = await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core Kursu" });
         await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core API Kursu" });
-    }
+
+	}
 }
 
 // Configure the HTTP request pipeline.

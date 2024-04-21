@@ -13,7 +13,7 @@ namespace CovCourse.Services.Catalog.Models
         [BsonRepresentation(MongoDB.Bson.BsonType.Decimal128)]
         public decimal Price { get; set; }
         public string UserId { get; set; }
-        public string? Photo { get; set; }
+        public string Photo { get; set; }
 
         [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
         public DateTime CreatedTime { get; set; }

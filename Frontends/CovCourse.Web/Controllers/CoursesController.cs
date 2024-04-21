@@ -35,7 +35,9 @@ namespace CovCourse.Web.Controllers
         public async Task<IActionResult> Create(CourseCreateInput courseCreateInput)
         {
             var categories = await _catalogService.GetAllCategoryAsync();
-            ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+            
+             ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+
             courseCreateInput.UserId = _sharedIdentityService.GetUserId;
             if (!ModelState.IsValid)
             {
