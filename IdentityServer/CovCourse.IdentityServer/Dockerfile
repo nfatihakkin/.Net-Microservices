@@ -3,7 +3,7 @@ WORKDIR /app
 EXPOSE 80
 COPY Shared/CovCourse.Shared/*.csproj Shared/CovCourse.Shared/
 COPY IdentityServer/CovCourse.IdentityServer/*.csproj IdentityServer/CovCourse.IdentityServer/ 
-RUN dotnet restore  IdentityServer/CovCourse.IdentityServer/*.csproj
+# RUN dotnet restore  IdentityServer/CovCourse.IdentityServer/*.csproj
 COPY . .
 RUN dotnet publish IdentityServer/CovCourse.IdentityServer/*.csproj -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:3.1 as runtime

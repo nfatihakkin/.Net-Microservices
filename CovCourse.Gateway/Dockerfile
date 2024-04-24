@@ -2,10 +2,10 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0-bookworm-slim as build
 WORKDIR /app
 EXPOSE 80
 
-COPY Gateways/CovCourse.Gateway/*.csproj Gateways/CovCourse.Gateway/
-RUN dotnet restore Gateways/CovCourse.Gateway/*.csproj
+COPY CovCourse.Gateway/*.csproj CovCourse.Gateway/
+RUN dotnet restore CovCourse.Gateway/*.csproj
 COPY . .
-RUN dotnet publish Gateways/CovCourse.Gateway/*.csproj -c Release -o out
+RUN dotnet publish CovCourse.Gateway/*.csproj -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-bookworm-slim as runtime
 WORKDIR /app
 COPY --from=build /app/out .

@@ -127,9 +127,9 @@ services:
   gateway.api:
     container_name: gateway.api
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=production
       - IdentityServerURL=http://identityserver.api
-      # - RabbitMQUrl=rabbitmq
+      - RabbitMQUrl=rabbitmq
     ports:
       - "5000:80"
   aspnetcoremvc.web:

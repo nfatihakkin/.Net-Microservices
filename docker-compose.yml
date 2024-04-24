@@ -51,7 +51,7 @@ services:
     image: gateway_api_image
     build: 
       context: .
-      dockerfile: Gateways/CovCourse.Gateway/Dockerfile
+      dockerfile: CovCourse.Gateway/Dockerfile
   aspnetcoremvc.web:
     image: aspnetcoremvc_api_image
     build: 
